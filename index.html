@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Clima</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Dashboard de Clima</h1>
+
+  <div class="charts-container">
+    <div class="chart-box">
+      <canvas id="graficoLinhas"></canvas>
+    </div>
+
+    <div class="chart-box">
+      <canvas id="graficoBarras"></canvas>
+    </div>
+  </div>
+
+  <script>
+    const ctxLinhas = document.getElementById('graficoLinhas').getContext('2d');
+    new Chart(ctxLinhas, {
+      type: 'line',
+      data: {
+        labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+        datasets: [
+          {
+            label: 'Temperatura',
+            data: [30, 29, 28, 25, 22, 23],
+            borderColor: '#f06292',
+            backgroundColor: '#f8bbd0',
+            tension: 0.4,
+            fill: false
+          },
+          {
+            label: 'Umidade',
+            data: [80, 82, 80, 85, 80, 83],
+            borderColor: '#42a5f5',
+            backgroundColor: '#bbdefb',
+            tension: 0.4,
+            fill: false
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Temperatura e Umidade por Horário'
+          },
+          legend: {
+            position: 'top'
+          }
+        }
+      }
+    });
+    
+    const ctxBarras = document.getElementById('graficoBarras').getContext('2d');
+    new Chart(ctxBarras, {
+      type: 'bar',
+      data: {
+        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+        datasets: [
+          {
+            label: 'Temperatura Média',
+            data: [22, 24, 27, 23, 20, 18],
+            backgroundColor: '#f06292'
+          },
+          {
+            label: 'Umidade Média',
+            data: [90, 89, 93, 87, 88, 82],
+            backgroundColor: '#42a5f5'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: 'Média de Temperatura e Umidade por Mês'
+          },
+          legend: {
+            position: 'top'
+          }
+        },
+        scales: {
+          y: {
+            type: 'linear',
+            beginAtZero: true,
+            max: 100,
+            ticks: {
+                stepSize: 10
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
