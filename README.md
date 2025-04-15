@@ -1,3 +1,4 @@
 # Atividade: ChartJS
 Crie uma página HTML e utilize a biblioteca "Chart.JS" como foi explicado, criando uma dashboard como a imagem abaixo:
-![image](https://moodle.sptech.school/pluginfile.php/13276/mod_assign/intro/refer%C3%AAncia-enunciado-atividade-chart.js.jpg)
+
+![image](https://github.com/user-attachments/assets/d8769c54-5f8d-4028-b71e-afb2e3aa5f99)
