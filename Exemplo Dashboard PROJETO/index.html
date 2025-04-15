@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - Azeite</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="profile">
+            <div class="avatar">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Avatar do usuário">
+            </div>
+            <h3>Flavio Roberti</h3>
+            <p>flavio.roque@sptech.school</p>
+        </div>
+        <nav class="menu">
+            <a href="#"><span>🏠</span> Home</a>
+            <a href="#"><span>ℹ️</span> Sobre Nós</a>
+            <a href="#"><span>🧮</span> Simulador</a>
+            <a href="#"><span>🌐</span> Site Institucional</a>
+        </nav>
+    </div>
+    <div class="main-content">
+  <div class="container">
+    <header class="header">
+      <h1>Dashboard - Produção de Azeite</h1>
+    </header>
+
+    <section class="cards">
+      <div class="card">
+        <h2>64.7 <span class="unidade">toneladas</span></h2>
+        <p>Produção Total</p>
+        <div class="mini-chart">
+          <canvas id="mini1"></canvas>
+        </div>
+      </div>
+      <div class="card">
+        <h2>9.0 <span class="unidade">toneladas</span></h2>
+        <p>Produção Máxima</p>
+        <div class="mini-chart">
+          <canvas id="mini2"></canvas>
+        </div>
+      </div>
+      <div class="card">
+        <h2>85%</h2>
+        <p>Umidade Máxima</p>
+        <div class="mini-chart">
+          <canvas id="mini3"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <section class="graficos">
+      <div class="grafico-box">
+        <h3>Produção Mensal</h3>
+        <canvas id="mainChart1"></canvas>
+      </div>
+      <div class="grafico-box">
+        <h3>Umidade vs Produção</h3>
+        <canvas id="mainChart2"></canvas>
+      </div>
+    </section>
+  </div>
+</div>
+
+  <script>
+    const miniConfig = (ctx, data) => new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [...Array(data.length).keys()],
+        datasets: [{
+          data: data,
+          borderColor: '#10b981',
+          backgroundColor: 'rgba(16, 185, 129, 0.2)',
+          tension: 0.4,
+          fill: true,
+          borderWidth: 1,
+          pointRadius: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: { display: false },
+          y: { display: false }
+        }
+      }
+    });
+
+    miniConfig(document.getElementById('mini1'), [3.2, 4.1, 6.3, 8.4, 2.5, 3.0, 1.3]);
+    miniConfig(document.getElementById('mini2'), [4, 5, 6, 8, 9, 6, 5]);
+    miniConfig(document.getElementById('mini3'), [70, 72, 75, 78, 82, 85]);
+
+    new Chart(document.getElementById('mainChart1'), {
+      type: 'bar',
+      data: {
+        labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        datasets: [{
+          label: 'Produção (ton)',
+          data: [3.2, 4.1, 5.0, 6.3, 7.1, 8.4, 9.0, 8.7, 2.5, 4.1, 3.0, 1.3],
+          backgroundColor: 'rgba(59, 130, 246, 0.7)',
+          borderRadius: 5
+        }]
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: 'Produção Mensal (toneladas)'
+          }
+        },
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('mainChart2'), {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        datasets: [
+          {
+            label: 'Umidade do Solo (%)',
+            data: [65, 68, 70, 75, 78, 82, 85, 83, 40, 35, 38, 32],
+            borderColor: '#3b82f6',
+            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+            fill: true,
+            tension: 0.4
+          },
+          {
+            label: 'Produção (ton)',
+            data: [3.2, 4.1, 5.0, 6.3, 7.1, 8.4, 9.0, 8.7, 2.5, 4.1, 3.0, 1.3],
+            borderColor: '#f59e0b',
+            backgroundColor: 'rgba(245, 158, 11, 0.1)',
+            fill: true,
+            tension: 0.4
+          }
+        ]
+      },
+      options: {
+        plugins: {
+          title: {
+            display: true,
+            text: 'Umidade do Solo vs Produção'
+          }
+        },
+        interaction: {
+          mode: 'index',
+          intersect: false
+        },
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

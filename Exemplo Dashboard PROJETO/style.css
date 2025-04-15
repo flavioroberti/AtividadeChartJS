@@ -1,0 +1,148 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f3f4f6;
+    color: #111827;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .header h1 {
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .cards {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+  }
+  
+  .card {
+    flex: 1;
+    min-width: 200px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.02);
+  }
+  
+  .card h2 {
+    font-size: 28px;
+    color: #10b981;
+    margin: 0;
+  }
+  
+  .card p {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 10px;
+  }
+  
+  .mini-chart {
+    height: 40px;
+  }
+  
+  .graficos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 20px;
+  }
+  
+  .grafico-box {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+  }
+  
+  .grafico-box h3 {
+    margin-top: 0;
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #1f2937;
+  }
+  body {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .sidebar {
+    width: 250px;
+    background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .sidebar .profile {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .sidebar .avatar img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+  
+  .sidebar h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .sidebar p {
+    font-size: 12px;
+    color: #ccc;
+  }
+  
+  .sidebar .menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .sidebar .menu a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+  
+  .sidebar .menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 30px;
+    background-color: #f3f4f6;
+  }
+  
+  
